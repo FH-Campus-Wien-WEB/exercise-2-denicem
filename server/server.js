@@ -23,7 +23,16 @@ app.get('/movies', function (req, res) {
 // Configure a 'get' endpoint for a specific movie
 app.get('/movies/:imdbID', function (req, res) {
 	/* Task 2.1. Remove the line below and add the functionality here */
-	res.sendStatus(404)
+	const id = req.params.imdbID;
+	console.log(`ENDPOINT '/movies/:${id}' called.`);
+
+	const movie = movies.find((movieId) => {
+		const movie = Object.values(movieId)[0];
+		return movie.imdbID === id});
+	if (movie != undefined) {
+		return res.json(Object.values(movie)[0]);
+	}
+	res.sendStatus(404);
 })
 
 /* Task 3.1 and 3.2.

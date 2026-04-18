@@ -11,6 +11,7 @@ window.onload = function () {
 				to pass this test */
 				const movie = Object.values(movieId)[0];
 				const movieArticle = document.createElement('article');
+				movieArticle.id = movie.imdbID;
 
 				const movieOverview = document.createElement('div');
 				movieOverview.classList.add('movie-overview');
@@ -100,7 +101,16 @@ window.onload = function () {
 				});
 				castAndCrew.append(actorTitle, actorList);
 
-				movieArticle.append(movieOverview, castAndCrew);
+				const editButton = document.createElement("button");
+				editButton.textContent = "Edit";
+				editButton.classList.add('edit-btn');
+
+				editButton.onclick = function() {
+				// Yeet the user to the edit page with the ID in the URL!
+					location.href = 'edit.html?imdbID=' + movie.imdbID;
+				};
+
+				movieArticle.append(movieOverview, castAndCrew, editButton);
 				fragment.append(movieArticle);
 			}
 			bodyElement.append(fragment);
