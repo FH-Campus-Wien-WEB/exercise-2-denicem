@@ -34,7 +34,7 @@ async function fetchMovieById(id) {
 };
 
 async function initMovies() {
-	const movieIds = ['tt0145487', 'tt0316654', 'tt0413300', 'tt0948470', 'tt1872181', 'tt2250912', 'tt6320628', 'tt10872600', 'tt22084616'];
+	const movieIds = ['tt0145487', 'tt0316654', 'tt0413300', 'tt0948470', 'tt1872181', 'tt2250912', 'tt6320628', 'tt10872600'];
 	return await Promise.all(movieIds.map(id => fetchMovieById(id)))
 };
 
